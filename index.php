@@ -84,5 +84,33 @@
         print "</table>\n";
 
 
+
+        $result = pg_query($conn, "SELECT DISTINCT on (name)time,name,furigana,email,relation,attendance,message FROM members ORDER BY name");
+        //データの取得
+        $arr = pg_fetch_all($result);      
+        print "<table id=\"dblist\" summary=\"集約テスト\">\n";
+        print "<caption>集約テスト</caption>\n";
+        //テーブルヘッダとしてフィールド（カラム）名を出力
+        print "<tr>\n";
+        $flds = pg_num_fields($result);
+        for($i=0; $i<$flds; $i++){
+          $field = pg_field_name($result, $i);
+         printf("<th abbr=\"%s\">%s</th>\n", $field, $field);
+        }
+        print "</tr>\n";
+
+        //データの出力
+        foreach($arr as $rows){
+        print "<tr>\n";
+        foreach($rows as $value){
+         printf("<td>%s</td>\n", $value);
+        }
+        print "</tr>\n";
+        }
+        print "</table>\n";
+        # PostgreSQL
+
+
+
 //DBとの接続を閉じる
 pg_close($conn);
