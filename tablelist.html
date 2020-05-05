@@ -1,13 +1,9 @@
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>結婚式参加可否一覧</title>
-    <style>
-      body {
-
-      }</style>
 </head>
 <body>
 
@@ -23,7 +19,7 @@
         //データの取得
         $arr = pg_fetch_all($result);
 
-        print "<table id=\"dblist\" summary=\"結婚式参加可否データ一覧\">\n";
+        print "<table style="font-size:5pt" id=\"dblist\" summary=\"結婚式参加可否データ一覧\">\n";
         print "<caption>結婚式参加可否データ一覧</caption>\n";
 
         //テーブルヘッダとしてフィールド（カラム）名を出力
