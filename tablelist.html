@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <?php
+
+        //pg_connect()に渡すパラメータの指定
+        $constr = "host=ec2-34-195-169-25.compute-1.amazonaws.com port=5432 dbname=d7v30lqsd1nu6g user=vupprickmnebwc password=8497d96c15036bf8ce3d851645d7b75c84bb42d3590660d78a07f201792c4063";
+         //DBに接続
+         $conn = pg_connect($constr);
+        //SQLの実行
+        $result = pg_query($conn, "SELECT * FROM people");
+        //データの取得
+        $arr = pg_fetch_all($result);
+
+        print "<table id=\"dblist\" summary=\"結婚式参加可否データ一覧\">\n";
+        print "<caption>結婚式参加可否データ一覧</caption>\n";
+
+        //テーブルヘッダとしてフィールド（カラム）名を出力
+        print "<tr>\n";
+        $flds = pg_num_fields($result);
+        for($i=0; $i<$flds; $i++){
+          $field = pg_field_name($result, $i);
+         printf("<th abbr=\"%s\">%s</th>\n", $field, $field);
+        }
+        print "</tr>\n";
+
+        //データの出力
+        foreach($arr as $rows){
+        print "<tr>\n";
+        foreach($rows as $value){
+         printf("<td>%s</td>\n", $value);
+        }
+        print "</tr>\n";
+        }
+        print "</table>\n";
+
+        $result = pg_query($conn, "SELECT * FROM people where relation = '新郎方'");
+        //データの取得
+        $arr = pg_fetch_all($result);
+
+        print "<table id=\"dblist\" summary=\"たつの友達\">\n";
+        print "<caption>たつの友達</caption>\n";
+
+        //テーブルヘッダとしてフィールド（カラム）名を出力
+        print "<tr>\n";
+        $flds = pg_num_fields($result);
+        for($i=0; $i<$flds; $i++){
+          $field = pg_field_name($result, $i);
+         printf("<th abbr=\"%s\">%s</th>\n", $field, $field);
+        }
+        print "</tr>\n";
+
+        //データの出力
+        foreach($arr as $rows){
+        print "<tr>\n";
+        foreach($rows as $value){
+         printf("<td>%s</td>\n", $value);
+        }
+        print "</tr>\n";
+        }
+        print "</table>\n";
+
+      
+        $result = pg_query($conn, "SELECT * FROM people where relation = '新婦方'");
+        //データの取得
+        $arr = pg_fetch_all($result);
+
+        print "<table id=\"dblist\" summary=\"ななの友達\">\n";
+        print "<caption>ななの友達</caption>\n";
+
+         //テーブルヘッダとしてフィールド（カラム）名を出力
+         print "<tr>\n";
+         $flds = pg_num_fields($result);
+        for($i=0; $i<$flds; $i++){
+          $field = pg_field_name($result, $i);
+         printf("<th abbr=\"%s\">%s</th>\n", $field, $field);
+        }
+        print "</tr>\n";
+
+        //データの出力
+        foreach($arr as $rows){
+        print "<tr>\n";
+        foreach($rows as $value){
+         printf("<td>%s</td>\n", $value);
+         }
+        print "</tr>\n";
+        }
+        print "</table>\n";
+
+//DBとの接続を閉じる
+pg_close($conn); ?>
+
+
+<FORM action="./delete_row.php" method="POST">
+    <input type="text" style="width:100%;margin:20px;font-size:48px; value="" name="id" placeholder="削除するidを入力" required><br><br>
+
+    <INPUT type="submit"style="width:20%;margin:20px;font-size:48px;" value="送信">
+</FORM>
+
+    
+</body>
+</html>
