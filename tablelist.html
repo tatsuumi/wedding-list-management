@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=UTF-8">
     <title>結婚式参加可否一覧</title>
     <style>
       body {
@@ -23,7 +22,7 @@
         //データの取得
         $arr = pg_fetch_all($result);
 
-        print "<table border="1" width="100%" id=\"dblist\" summary=\"結婚式参加可否データ一覧\">\n";
+        print "<table id=\"dblist\" summary=\"結婚式参加可否データ一覧\">\n";
         print "<caption>結婚式参加可否データ一覧</caption>\n";
 
         //テーブルヘッダとしてフィールド（カラム）名を出力
@@ -49,7 +48,7 @@
         //データの取得
         $arr = pg_fetch_all($result);
 
-        print "<table border="1" width="100%" id=\"dblist\" summary=\"たつの友達\">\n";
+        print "<table id=\"dblist\" summary=\"たつの友達\">\n";
         print "<caption>たつの友達</caption>\n";
 
         //テーブルヘッダとしてフィールド（カラム）名を出力
@@ -76,7 +75,7 @@
         //データの取得
         $arr = pg_fetch_all($result);
 
-        print "<table border="1" width="100%" id=\"dblist\" summary=\"ななの友達\">\n";
+        print "<table id=\"dblist\" summary=\"ななの友達\">\n";
         print "<caption>ななの友達</caption>\n";
 
          //テーブルヘッダとしてフィールド（カラム）名を出力
