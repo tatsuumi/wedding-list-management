@@ -12,7 +12,7 @@
          //DBに接続
          $conn = pg_connect($constr);
         //SQLの実行
-        $result = pg_query($conn, "SELECT * FROM people");
+        $result = pg_query($conn, "SELECT name,attendance FROM people");
         //データの取得
         $arr = pg_fetch_all($result);
 
@@ -38,7 +38,7 @@
         }
         print "</table>\n";
 
-        $result = pg_query($conn, "SELECT * FROM people where relation = '新郎方'");
+        $result = pg_query($conn, "SELECT name,attendance FROM people where relation = '新郎方'");
         //データの取得
         $arr = pg_fetch_all($result);
 
@@ -65,7 +65,7 @@
         print "</table>\n";
 
       
-        $result = pg_query($conn, "SELECT * FROM people where relation = '新婦方'");
+        $result = pg_query($conn, "SELECT name,attendance FROM people where relation = '新婦方'");
         //データの取得
         $arr = pg_fetch_all($result);
 
@@ -91,7 +91,7 @@
         }
         print "</table>\n";
 
-        $result = pg_query($conn, "SELECT * FROM people where attendance = '欠席'");
+        $result = pg_query($conn, "SELECT name FROM people where attendance = '欠席'");
         //データの取得
         $arr = pg_fetch_all($result);
 
