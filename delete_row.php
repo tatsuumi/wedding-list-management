@@ -11,4 +11,4 @@ $conn = pg_connect($constr);
 $result = pg_query($conn, "DELETE  FROM people where id=$id");
 pg_close($conn); 
 
-require("index.php");
+require("rows.php");
